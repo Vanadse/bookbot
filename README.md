@@ -1,2 +1,3 @@
 # bookbot
-A temporary repo I will be using for a boot.dev lesson.
+
+BookBot is my first [Boot.dev](https://www.boot.dev) project!

@@ -1,3 +1,4 @@
+import sys
 from stats import number_of_words_in #requires a string as an argument
 from stats import number_of_characters_in # requires a string as an argument
 from stats import make_sorted_list_from # requires a dictionary as an argument
@@ -7,15 +8,18 @@ def get_book_text(path_to_book):
     with open(path_to_book) as f:
         return(f.read())
 
-
+# Checks if there are two arguments in sys.argv
+def check_arguments(arguments):
+    if len(sys.argv) !=2:
+        print("Usage: python3 main.py <path_to_book>")
+        sys.exit(1)
 # Main starts here -------------------------------
 def main():
-    book = "books/frankenstein.txt"
+    check_arguments(sys.argv)
+    book = sys.argv[1]
     num_words = number_of_words_in(get_book_text(book))
     num_characters = number_of_characters_in(get_book_text(book))
-    #print(f"{num_words} words found in the document")
-    #print(num_characters)
-    #print(make_sorted_list_from(num_characters))
+
     print("============ BOOKBOT ============")
     print(f"Analyzing book found at {book}...")
     print(f"Found {num_words} total words")
@@ -25,5 +29,7 @@ def main():
         num = character["num"]
         print(f"{char}: {num}")
     print("============= END ===============")
+
+
 # Dont edit below here ---------------------------
 main()
